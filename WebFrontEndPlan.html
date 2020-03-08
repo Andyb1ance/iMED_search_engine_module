@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>前端开发计划 修订版</title>
+    <style>
+        body,ul,li{
+            /* position: relative; */
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            list-style: none;
+        }
+        header,footer{
+            position: fixed;
+            z-index: 9;
+            width: 100%;
+            height: 60px;
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            background: #77d677;
+        }
+        footer{
+            bottom: 0;
+        }
+        section{
+            padding: 60px 0;
+        }
+        nav{
+            background: #93f393;
+            color: #333;
+        }
+        nav li{
+            padding: 10px 20px;
+        }
+        nav li.active{
+            background: #77d677;
+        }
+        article{
+            padding: 20px;
+            font-size: 24px;
+            text-align: left;
+            background: #d9ffd9;
+            height: 2500px;
+        }
+        /* default */
+        section.default nav{
+            position: absolute;
+            top: 60px;
+            bottom: 60px;
+            /* float: left;
+            height: 100%; */
+            width: 200px;
+        }
+        section.default nav li{
+            padding: 10px 20px;
+        }
+        section.default nav li.active{
+            background: #77d677;
+        }
+        section.default article{
+            padding-left: 220px;
+        }
+        /* flexModal */
+        section.flexModal{
+            display: flex;
+        }
+        section.flexModal nav{
+            width: 200px;
+        }
+        section.flexModal article{
+            flex: 1;
+        }
+
+        /* fixedLeft */
+        section.fixedLeft nav{
+            position: fixed;
+            top: 60px;
+            bottom: 60px;
+        }
+        section.fixedLeft article{
+            margin-left: 200px;
+        }
+    </style>
+    <script>
+        function changeClass(element) {
+            element.setAttribute('class','active')
+        }
+        function changeClassBack(element) {
+            element.setAttribute('class','')
+        }
+        function getContent(branch){
+            //alert("good!")
+            if(branch=="tech"){
+                document.getElementById("content").innerHTML=
+                    "<li>- html</li><br>" +
+                    "<li>- css</li><br>" +
+                    "<li>- javaScript + vue.js(待定)</li>";
+            }else if(branch=="problem"){
+                document.getElementById("content").innerHTML=
+                    "<li>- 搭建网页</li><br>" +
+                    "<li>- 确定接口写成文档</li><br>" +
+                    "<li>- 与后端对接,测试</li>";
+            }else if(branch=="timeline"){
+                document.getElementById("content").innerHTML=
+                    "<li><del>week1 ~2020.3.8 基础知识的学习</del></li><br>" +
+                    "<li>week2 ~3.15 讨论出大致的布局 蔡永宁搭建出大致的框架 创建github仓库</li><br>" +
+                    "<li>week3 ~3.22 美化页面 完成函数的实现 完成接口文档</li><br>" +
+                    "<li>week4 ~3.29 测试 返工 对接</li>";
+            }else{
+                document.getElementById("content").innerHTML=
+                    "<li><del>摸鱼</del>认真</li><br>" +
+                    "<li>边做边学 点到为止 提高生产力</li><br>" +
+                    "<li>兼顾学业成绩与技术进步</li><br>" +
+                    "<li>怎么好看怎么来XD</li>";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>iMED 前端开发计划 <sub>--修订版</sub></header>
+<section class="flexModal fixedLeft">
+    <nav>
+        <ul>
+            <li onmousemove="changeClass(this)" onmouseleave="changeClassBack(this)" onclick="getContent('tech')">技术框架</li>
+            <li onmousemove="changeClass(this)" onmouseleave="changeClassBack(this)" onclick="getContent('problem')">解决问题</li>
+            <li onmousemove="changeClass(this)" onmouseleave="changeClassBack(this)" onclick="getContent('timeline')">时间线</li>
+            <li onmousemove="changeClass(this)" onmouseleave="changeClassBack(this)" onclick="getContent()">总体思路</li>
+        </ul>
+    </nav>
+    <article>
+        <h3>
+        </h3>
+        <ol id="content">
+            <li>经过一周的学习，结论是我们还需要更多时间学习 XD</li>
+            <br>
+            <li>写个文档我已经尽力了 XD</li>
+        </ol>
+    </article>
+</section>
+<footer>蔡永宁 聂秋实 2020/3/8</footer>
+</body>
+</html>
