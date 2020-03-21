@@ -1,13 +1,38 @@
-# iMED_web_front_end
+# iMED_search_engine_module
 
- iMED工程搜索引擎模块-前端页面
+iMED工程搜索引擎模块
+
+## environment
+
+flask
+
+## 使用
+
+本地测试
+
+- 运行hello.py
+- 127.0.0.1:5000/hello
 
 ## Week1
 
-学习前端知识
+学习基础知识
 
-- html
-- css
-- javaScript + vue.js
+- 前端
+  - html, css , javascript
+- 后端
+  - python, flask
 
-写个[计划文档](./WebFrontEndPlan.html)练手
+## Week2
+
+尝试搭建
+
+- 前端
+  - 基本布局, 功能需求
+- 后端
+  - 基本功能
+
+## Week3
+
+尝试对接, 重新转移到后端, 继续美化前端
+
+待补充

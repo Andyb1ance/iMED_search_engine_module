@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <!-- saved from url=(0038)http://www.imed-lab.com/?page_id=15501 -->
-<html><!--<![endif]-->
+<html xmlns:width="http://www.w3.org/1999/xhtml"><!--<![endif]-->
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <title>检索引擎</title>
     <style id="static-stylesheet" type="text/css"></style>
-    <link href="test.css" media="all" rel="stylesheet"
+    <link href="{{ url_for('static', filename='test.css') }}" media="all" rel="stylesheet"
           type="text/css"> <!-- Cache! -->
-    <script src="Dynamic_figure.js"
-            type="text/javascript">/*Cache!*/</script>
- <!-- Cache! -->
-
 </head>
 
 
@@ -28,7 +24,7 @@
                         <span class="logospan">
                             <img alt="iMED医疗影像/眼科影像团队"
                                  class="preload-me"
-                                 height="156" src="./img/iMed.png"
+                                 height="156" src="{{ url_for('static', filename='iMed.png') }}"
                                  width="512">
                         </span>
                     </a>
@@ -155,11 +151,14 @@
                                          p-padding="0 0 0 0"
                                          qfyuuid="qfy_posts_grid_8716w-c-2c"
                                          style="margin-top:0;margin-bottom:0;padding: 0;">
+
                                         <div class="qfe_wrapper">
                                             <div class="teaser_grid_container noanimale"
                                                  data-cate="55"
                                                  data-pcate="" data-type="post"
                                                  style="background-repeat: repeat;;clear:both;">
+
+                                                <!-- this position -->
                                                 <ul class="qfe_thumbnails qfe_thumbnails-fluid vc_clearfix  post_blog "
                                                     data-layout-mode="fitRows"
                                                     style="min-height:60px;">
@@ -177,20 +176,38 @@
 
                                                             <div class="blog-content wf-td"
                                                                  style="display:block;word-break:break-all">
-                                                                <p style="color: black"><label for="upload_picture"><strong>上传图片: </strong></label></p><br/>
-                                                                <form method="post" action="../upload" enctype="multipart/form-data">
 
                                                                 <div class="post-title"
                                                                      style="font-weight:normal;color:#333333;line-height:16px; vertical-align: top;  ">
-                                                                    <input type="file" size="30" accept="image/png,image/jpeg,image/gif,image/jpg" id="upload_picture" name="upload_picture" multiple/>
+                                                                    <form method="post" action="http://localhost:5000/up_photo" enctype="multipart/form-data">
+                                                                        <table>
+                                                                            <tr>
+                                                                                <th>
+                                                                                    <p style="color: black"><label for="upload_picture"><strong>上传图片: </strong></label></p>
+                                                                                </th>
+                                                                                <th>
+                                                                                    <p style="color: black"><label for="upload_picture"><strong>选择数据集: </strong></label></p>
+                                                                                </th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <input id="upload_picture" type="file" size="30" name="photo" style="margin-top:15px;" accept="image/png,image/gif,image/jpeg,image/jpg"/>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <input type="text" class="txt_input" name="dataset" size="30" style="margin-top:15px;"/>
+                                                                                </td>
+                                                                                <td></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                        <input type="submit" value="提交信息" class="button-new" style="margin-top:30px;margin-left: 2px"/>
+                                                                    </form>
                                                                 </div>
 
 
                                                                 <div class="post-comment"
                                                                      style="padding-top:10px;padding-bottom:10px;color:#bababa;font-size:12px;line-height:12px;">
-                                                                    test2
                                                                 </div>
-                                                                </form>
+
 
 
                                                                 <div class="entry-content post_excerpt"
@@ -222,7 +239,20 @@
 
                                                                 <div class="post-title"
                                                                      style="font-weight:normal;color:#333333;line-height:16px; vertical-align: top;  ">
-                                                                    Test1
+                                                                    <table id="result_list">
+                                                                        <tr><th style="width:360px">标签:</th><th style="width:360px">图片:</th></tr>
+                                                                        <br/>
+                                                                        {% for i in u %}
+                                                                        <tr>
+                                                                            <td>
+                                                                                <img style="width:360px" src="data:;base64,{{ i[0] }}">
+                                                                            </td>
+                                                                            <td>
+                                                                                <img style="width:360px" src="data:;base64,{{ i[1] }}">
+                                                                            </td>
+                                                                        </tr>
+                                                                        {% endfor %}
+                                                                    </table>
                                                                 </div>
 
 
@@ -287,7 +317,7 @@
                                      style="position: relative;;;line-height:1.5em;;background-position:left top;background-repeat: no-repeat;;margin-top:0;margin-bottom:0;padding-top:11px;padding-bottom:0;padding-right:0;padding-left:0;border-radius:0px;">
                                     <div class="qfe_wrapper">
                                         <div style="background-color: rgb(45, 50, 55);color: rgb(255, 255, 255);font-size: 24px;font-family: 微软雅黑;">
-                                            联系iMED-XXX
+                                            联系iMED-检索引擎小组
                                         </div>
                                     </div>
                                 </div>
@@ -303,7 +333,7 @@
                                             <span style="font-size: 18px;">
                                                 <p style="margin: auto; text-align: left;">
                                                     <span style="color:#808080;">
-                                                        <span style="font-family: 微软雅黑;">邮箱：xxxxx</span>
+                                                        <span style="font-family: 微软雅黑;">邮箱：11710802@mail.sustech.edu.cn</span>
                                                     </span>
                                                 </p>
                                             </span>
