@@ -49,8 +49,8 @@ def test():
     #for i in filename:
     #    images.append(return_img_stream(i))
     images.append([])
-    images[0].append(return_img_stream("D://code//iMED_web_front_end//myproject//myproject//upload//12LDT7yX.png"))
-    images[0].append(return_img_stream("D://code//iMED_web_front_end//myproject//myproject//upload//12LDT7yX.png"))
+    images[0].append(return_img_stream("./upload/12LDT7yX.png"))
+    images[0].append(return_img_stream("./upload/12LDT7yX.png"))
     #images.append("D:\code\iMED_web_front_end\myproject\myproject\upload\AMVJ5Fno.png")
     #如果直接是base64图片，则全加到images里发过去
     return render_template('Search.html', u=images)
@@ -67,4 +67,4 @@ def hello():
     return render_template('Search.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0', port=5000)
