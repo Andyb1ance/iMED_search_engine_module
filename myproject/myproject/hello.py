@@ -28,6 +28,8 @@ def api_upload():
     #     os.makedirs(file_dir)
     f = request.files['photo']
     print(type(f))
+    search(f)
+    return render_template('Search.html', u=images)
     # if f and allowed_file(f.filename):
     #     fname = secure_filename(f.filename)
     #     ext = fname.rsplit('.', 1)[1]
@@ -68,4 +70,4 @@ def hello():
     return render_template('Search.html')
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=5000
+    app.run(debug=True,host='0.0.0.0', port=5000)
