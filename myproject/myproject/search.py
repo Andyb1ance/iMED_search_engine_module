@@ -3,6 +3,7 @@ from extractor import Resnet
 from encoder import Faiss
 import psycopg2
 import base64
+
 def search(imagePath,indexFile):
     
     e = Resnet.resnet('cpu')
