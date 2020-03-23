@@ -14,7 +14,7 @@ def createDB(imageFolder,indexFile):
         fileList = file_list
         for img in file_list:
             #transform picture to 256*256
-            t = PIL.transform(img)
+            t = PIL.transform(os.path.join(imageFolder,img))
             #extract feature and store in list 'temp'
             temp.append(e.extract(t))
     #construct the index
@@ -23,7 +23,7 @@ def createDB(imageFolder,indexFile):
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432") 
     cur = conn.cursor()
     for img in fileList:
-        with open(img,'rb') as f:
+        with open(os.path.join(imageFolder,img),'rb') as f:
             image = f.read()
         sql = "insert into imgTable (img) values ({})".format(psycopg2.Binary(image))
         cur.execute(sql)
