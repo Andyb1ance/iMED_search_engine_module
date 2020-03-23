@@ -16,7 +16,7 @@ def createDB(imageFolder,indexFile):
             #transform picture to 256*256
             t = PIL.transform(os.path.join(imageFolder,img))
             #extract feature and store in list 'temp'
-            temp.append(e.extract(t))
+            temp.append(e.extract(t).numpy())
     #construct the index
     Faiss.construct(temp,np.array(temp[0]).shape[0],indexFile) 
     ##加上insert图片的语句..不过faiss是从0自增,可能需要调整.
