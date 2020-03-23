@@ -7,7 +7,7 @@ import os
 
 def createDB(imageFolder,indexFile):
     images = os.walk(imageFolder)
-    e = resnet()
+    e = Resnet.resnet()
     temp = list()
     fileList = list()
     for path,dir_list,file_list in images:

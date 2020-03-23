@@ -14,7 +14,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = 'upload'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 basedir = os.path.abspath(os.path.dirname(__file__))
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'JPG', 'PNG', 'gif', 'GIF'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'JPG', 'PNG', 'gif', 'GIF','jpeg','JPEG'])
 
 
 def allowed_file(filename):
@@ -67,4 +67,4 @@ def hello():
     return render_template('Search.html')
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=5000)
+    app.run(debug=True,host='0.0.0.0', port=5000
