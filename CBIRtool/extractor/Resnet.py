@@ -4,7 +4,7 @@ import torch
 
 class resnet:
     def __init__():
-        self.model = models.resnet34(num_classes=10).to(device)
+        self.model = models.resnet34(pretrained=True,num_classes=10).to(device)
     def extract(img,device):
         img = transforms.ToTensor()(img)
         img = img.unsqueeze(0)
@@ -13,5 +13,6 @@ class resnet:
             #print("img to device successful")
             out = self.model(img)
         return out
+    
 
 

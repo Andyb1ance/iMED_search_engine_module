@@ -13,7 +13,8 @@ def construct(vectors,Dimension,indexFile,GPU=False):
     #     res = faiss.StandardGpuResources()
     #     index = faiss.index_cpu_to_gpu(res, 0, index)
     #assert type(vectors)==list
-    vectors = transform(vectors)    
+    vectors = transform(vectors)
+    print(vectors)    
     index=faiss.IndexFlatIP(Dimension)
     index.add(vectors)
     with open(indexFile,'w') as file:
