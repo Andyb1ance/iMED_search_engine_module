@@ -1,6 +1,6 @@
 from transformer import PIL
 from extractor import Resnet
-#from encoder import Faiss
+from encoder import Faiss
 t = PIL.transform('./sample/13_left.jpeg')
 e = Resnet.extract(t,'cpu')
 

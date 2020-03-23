@@ -19,7 +19,7 @@ def construct(vectors,Dimension,indexFile,GPU=False):
     with open(indexFile,'w') as file:
     	file.write('')
     faiss.write_index(index, indexFile)
-    return  
+    return index
 
 
 def update(vectors,indexFile):
