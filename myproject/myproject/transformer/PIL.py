@@ -12,7 +12,7 @@ def transform(imagePath:str):
     img = Image.open(imagePath)
     img = img.resize((256,256))
     #print(img.size,img.mode)
-
+    img = img.convert("RGB")
     return img
 
     

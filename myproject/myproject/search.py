@@ -8,7 +8,7 @@ def search(imagePath,indexFile):
     
     e = Resnet.resnet('cpu')
     t = PIL.transform(imagePath)
-    distance,index = Faiss.search(e.extract(t),indexFile,2)
+    distance,index = Faiss.search(e.extract(t),indexFile,1)
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432") 
     cur = conn.cursor()
     for each in index[0]:

@@ -9,7 +9,7 @@ import os
 import random
 import datetime
 import base64
-from CBIRtool import search
+import search
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'upload'
@@ -29,7 +29,7 @@ def api_upload():
     #     os.makedirs(file_dir)
     f = request.files['photo']
     print(type(f))
-    images = search(f,'./CBIRtool/encoder/index/sample.index')
+    images = search.search(f,'./encoder/index/sample.index')
     return render_template('Search.html', u=images)
     # if f and allowed_file(f.filename):
     #     fname = secure_filename(f.filename)
