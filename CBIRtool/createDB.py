@@ -18,7 +18,8 @@ def createDB(imageFolder,indexFile):
             #extract feature and store in list 'temp'
             temp.append(e.extract(t).numpy())
     #construct the index
-    Faiss.construct(temp,np.array(temp[0]).shape[0],indexFile) 
+    
+    Faiss.construct(temp,1000,indexFile) 
     ##加上insert图片的语句..不过faiss是从0自增,可能需要调整.
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432") 
     cur = conn.cursor()

@@ -14,8 +14,9 @@ def construct(vectors,Dimension,indexFile,GPU=False):
     #     index = faiss.index_cpu_to_gpu(res, 0, index)
     #assert type(vectors)==list
     vectors = transform(vectors)
-    print(vectors)    
-    index=faiss.IndexFlatIP(Dimension)
+    vectors = np.squeeze(vectors)
+    print(vectors.shape)    
+    index=faiss.IndexFlatL2(Dimension)
     index.add(vectors)
     with open(indexFile,'w') as file:
     	file.write('')
