@@ -37,8 +37,8 @@ def api_upload():
     #     f.save(fullPath)
 
         # return redirect(url_for('test'))
-    else:
-        return jsonify({"error": 1001, "msg": "上传失败"})
+    # else:
+    #     return jsonify({"error": 1001, "msg": "上传失败"})
 
 # @app.route('/test', strict_slashes=False)
 # def test():
