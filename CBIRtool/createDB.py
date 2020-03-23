@@ -7,7 +7,7 @@ import os
 
 def createDB(imageFolder,indexFile):
     images = os.walk(imageFolder)
-    e = Resnet.resnet()
+    e = Resnet.resnet('cpu')
     temp = list()
     fileList = list()
     for path,dir_list,file_list in images:
@@ -16,7 +16,7 @@ def createDB(imageFolder,indexFile):
             #transform picture to 256*256
             t = PIL.transform(img)
             #extract feature and store in list 'temp'
-            temp.append(e.extract(t,'cpu'))
+            temp.append(e.extract(t))
     #construct the index
     Faiss.construct(temp,np.array(temp[0]).shape[0],indexFile) 
     ##加上insert图片的语句..不过faiss是从0自增,可能需要调整.
