@@ -16,9 +16,12 @@ cur = conn.cursor()
 sql = 'select img from imgTable limit 1 offset 1'
 cur.execute(sql)
 rows = cur.fetchall()
+
+print(type(rows))
 for row in rows:
     with open('test.jpeg','wb') as file:
-    	file.write(row)
+    	file.write(row[0])
+    
 
 
 conn.commit()
