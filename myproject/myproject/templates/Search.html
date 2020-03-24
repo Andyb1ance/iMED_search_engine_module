@@ -248,9 +248,11 @@
                                                                             <td>
                                                                                 <img style="width:360px" src="data:;base64,{{ i[0] }}">
                                                                             </td>
+                                                                            {% for j in i[1:] %}
                                                                             <td>
-                                                                                <img style="width:360px" src="data:;base64,{{ i[1] }}">
+                                                                                <img style="width:360px" src="data:;base64,{{ j }}">
                                                                             </td>
+                                                                            {% endfor %}
                                                                         </tr>
                                                                         {% endfor %}
                                                                     </table>
