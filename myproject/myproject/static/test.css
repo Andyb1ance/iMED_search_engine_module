@@ -406,7 +406,8 @@ h2 {
 }
 
 #footer {
-    position: relative;
+    position: fixed;
+    width: inherit;
 }
 
 #page {
@@ -691,6 +692,7 @@ h2 {
 #footer {
     padding: 20px 0px 20px 0px;
     margin: 0px 0px 0px 0px;
+    bottom: 0px;
 }
 
 #main-nav > li > a {
