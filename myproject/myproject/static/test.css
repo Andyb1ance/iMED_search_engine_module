@@ -1,24 +1,4 @@
 
-@media only screen and (min-width: 992px) {
-    .qfy-column-2-5e7095926df5a977250 > .column_inner {
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-    @media only screen and (max-width: 992px) {
-        .qfy-column-2-5e7095926df5a977250 > .column_inner {
-            margin: 0 auto 0 !important;
-            min-height: 0 !important;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-    }
-}
-
 .UUID-POSTS-5e709592720d170833 .teaser_grid_container {
     border-bottom: 0;
     border-top: 0;
@@ -47,20 +27,7 @@
     transition: all .6s ease;
 }
 
-@media only screen and (min-width: 992px) {
-    section.section.qfy-row-2-5e7095926ded5628494 {
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 40px;
-        padding-bottom: 60px;
-        margin-top: 0;
-    }
 
-    section.section.qfy-row-2-5e7095926ded5628494 > .container {
-        max-width: 1024px;
-        margin: 0 auto;
-    }
-}
 @media only screen and (max-width: 768px) {
     #vc_header_5e7095926ddf1497 .header_title {
         font-size: 18px !important;
@@ -85,17 +52,7 @@
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-@media only screen and (min-width: 992px) {
-    .qfy-column-3-5e709592778ed647759 > .column_inner {
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
 
-    .qfe_row .vc_span_class.qfy-column-3-5e709592778ed647759 {
-    }
-}
 
 @media only screen and (max-width: 992px) {
     .qfy-column-3-5e709592778ed647759 > .column_inner {
@@ -128,16 +85,7 @@
     max-width: 100%;
 }
 
-@media screen and (min-width: 992px) {
 
-    .qfe_row .vc_span4 {
-        width: 33.33333333333333%;
-    }
-
-    .qfe_row .vc_span12 {
-        width: 100%;
-    }
-}
 
 @media screen and (max-width: 992px) {
     .qfe_row .vc_span4, .qfe_row .vc_span12 {
@@ -145,12 +93,6 @@
     }
 }
 
-@media only screen and (min-width: 992px) {
-
-    #branding.bit-logo-bar {
-        margin: 0 !important;
-    }
-}
 
 @media only screen and (max-width: 992px) {
 
@@ -234,8 +176,6 @@
     }
 }
 
-/* qfy_editor_front: (http://www.imed-lab.com/qfy-content/plugins/qfy_editor/assets/css/qfy_editor_front.css) */
-
 footer, header, nav, section {
     display: block;
 }
@@ -252,14 +192,6 @@ body {
 
 a {
     background: transparent;
-}
-
-a:focus {
-    outline: thin dotted;
-}
-
-a:active, a:hover {
-    outline: 0;
 }
 
 img {
@@ -326,9 +258,6 @@ body ul.qfe_thumbnails-fluid li {
     list-style: none !important;
 }
 
-body ul.qfe_thumbnails-fluid li:after, body ul.qfe_thumbnails-fluid li:before {
-    display: none !important;
-}
 
 .qfe_row .qfe_grid ul.qfe_thumbnails-fluid {
     padding: 0;
@@ -402,32 +331,6 @@ h2 {
     width: 100%;
 }
 
-
-@charset "utf-8";
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.eot');
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg')
-}
-
-@font-face {
-    font-family: 'fontawesome';
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.eot');
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.eot?#iefix') format('embedded-opentype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.woff') format('woff'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal
-}
-
-/* dt-main: (http://www.imed-lab.com/qfy-content/themes/qfy-01/css/main.css) */
-@charset "utf-8";
-@font-face {
-    font-family: 'revicons';
-    src: url('//f.goodq.top/qfy-content/plugins/revslider/rs-plugin/font/revicons.eot?123');
-    src: url('//f.goodq.top/qfy-content/plugins/revslider/rs-plugin/font/revicons.eot?123#iefix') format('embedded-opentype'), url('//f.goodq.top/qfy-content/plugins/revslider/rs-plugin/font/revicons.woff?123') format('woff'), url('//f.goodq.top/qfy-content/plugins/revslider/rs-plugin/font/revicons.ttf?123') format('truetype'), url('//f.goodq.top/qfy-content/plugins/revslider/rs-plugin/font/revicons.svg?123#revicons') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .bitem.logo.small {
     max-height: 50px
 }
@@ -471,43 +374,6 @@ section.section:not(.overflowauto) {
     clear: both
 }
 
-@media print {
-    * {
-        text-shadow: none !important;
-        color: #000 !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-
-    a, a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 2cm .5cm;
-    }
-
-    p, h2 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2 {
-        page-break-after: avoid;
-    }
-}
 
 .wf-table {
     display: table;
@@ -713,8 +579,6 @@ a {
     -webkit-backface-visibility: hidden;
 }
 
-/* dt-custom-less: (http://www.imed-lab.com/qfy-content/uploads/qf-less/qfy-01/css/custom-819861d640.css) */
-@charset "utf-8";
 
 .wf-container:before {
     content: "";
@@ -751,11 +615,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: #5ec7b2;
-    text-decoration: underline;
-}
-
 h2 {
     color: #373a41;
     text-transform: none;
@@ -785,15 +644,9 @@ h2 {
     color: #eeeeee;
 }
 
-/* dt-bit-custom-less: (http://www.imed-lab.com/qfy-content/uploads/qf-less/qfy-01/css/bit-custom-819861d640.css) */
-@charset "utf-8";
 #footer {
     background: #2d3237 none repeat center top;
     border-top: 1px solid transparent;
-}
-
-#main-nav.bit-menu-default > li:hover > a span {
-    color: #5ddffe;
 }
 
 #header #main-nav.bit-menu-default > li > a i.underline {
@@ -844,72 +697,18 @@ h2 {
     color: #fff;
 }
 
-/* qfy_dynamic_css: (http://www.imed-lab.com/qfy-content/uploads/qfy-custom-style.css) */
 
 
 @media screen and (max-width: 992px) {
     body #header .wf-wrap .wf-table #branding {
         table-layout: fixed
     }
-
-    .
-
-    body.page-template-template-fullscreen-php #header .wf-wrap .wf-table #branding {
-        table-layout: fixed
-    }
 }
 
-@media screen and (min-width: 992px) {
-    body #header.headerPM {
-        padding-left: 3px;
-        padding-right: 5px
-    }
 
-    body .wf-wrap .bitem.logo img {
-        max-height: 43px;
-        height: 43px;
-        width: 141px
-    }
 
-    body .wf-wrap .bitem.logo {
-        max-height: 43px;
-        top: 0px;
-        left: 0px
-    }
-}
-
-/* fontawesome_css: (http://www.imed-lab.com/qfy-content/themes/qfy-01/css/font-awesome.min.css) */
-@font-face {
-    font-family: 'fontawesome';
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-webfont.eot');
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-webfont.eot?#iefix&v=4.2.0') format('embedded-opentype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-webfont.woff') format('woff'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal
-}
-
-/* dt-awsome-fonts-boot: (http://www.imed-lab.com/qfy-content/themes/qfy-01/css/bootstrap.min.css) */
-@charset "utf-8";
-@font-face {
-    font-family: 'Glyphicons Halflings';
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.eot');
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg')
-}
-
-@font-face {
-    font-family: 'fontawesome';
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.eot');
-    src: url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.eot?#iefix') format('embedded-opentype'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.woff') format('woff'), url('//f.goodq.top/FeiEditor/bitSite/wp/bootstrap/fonts/fontawesome-v3.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal
-}
-
-/*
-Cache: vc_layout_bg, rightbar_css, scroll_top_css
-*/
-/* vc_layout_bg: (http://www.imed-lab.com/qfy-content/plugins/qfy_editor/assets/css/vc_layout_bg.css) */
 @-webkit-keyframes circle{0%,100%,50%{-webkit-transform:translate(0,0);transform:translate(0,0)}25%{-webkit-transform:translate(160px,80px);transform:translate(160px,80px)}75%{-webkit-transform:translate(-160px,-80px);transform:translate(-160px,-80px)}}@keyframes circle{0%,100%,50%{-webkit-transform:translate(0,0);transform:translate(0,0)}25%{-webkit-transform:translate(160px,80px);transform:translate(160px,80px)}75%{-webkit-transform:translate(-160px,-80px);transform:translate(-160px,-80px)}}@-webkit-keyframes triangle{0%,100%,50%{-webkit-transform:translate(0,0) rotate(26deg);transform:translate(0,0) rotate(26deg)}25%{-webkit-transform:translate(-140px,-80px) rotate(54deg);transform:translate(-140px,-80px) rotate(54deg)}75%{-webkit-transform:translate(140px,80px) rotate(0);transform:translate(140px,80px) rotate(0)}}@keyframes triangle{0%,100%,50%{-webkit-transform:translate(0,0) rotate(26deg);transform:translate(0,0) rotate(26deg)}25%{-webkit-transform:translate(-140px,-80px) rotate(54deg);transform:translate(-140px,-80px) rotate(54deg)}75%{-webkit-transform:translate(140px,80px) rotate(0);transform:translate(140px,80px) rotate(0)}}@-webkit-keyframes squareindex{0%,100%,50%{-webkit-transform:translate(0,0) rotate(-156deg);transform:translate(0,0) rotate(-156deg)}25%{-webkit-transform:translate(-120px,-80px) rotate(-186deg);transform:translate(-120px,-80px) rotate(-186deg)}75%{-webkit-transform:translate(120px,80px) rotate(-126deg);transform:translate(120px,80px) rotate(-126deg)}}@keyframes squareindex{0%,100%,50%{-webkit-transform:translate(0,0) rotate(-156deg);transform:translate(0,0) rotate(-156deg)}25%{-webkit-transform:translate(-120px,-80px) rotate(-186deg);transform:translate(-120px,-80px) rotate(-186deg)}75%{-webkit-transform:translate(120px,80px) rotate(-126deg);transform:translate(120px,80px) rotate(-126deg)}}.layout-bg-circle{position:absolute;top:50%;left:50%;width:870px;height:870px;margin-top:-800px;margin-left:-1200px;-webkit-animation:circle 80s linear infinite;animation:circle 80s linear infinite;border-radius:50%;background:red}.layout-bg-square{position:absolute;top:50%;left:50%;width:700px;height:700px;margin-top:-200px;margin-left:-420px;-webkit-transform:rotate(156deg);-ms-transform:rotate(156deg);transform:rotate(156deg);-webkit-animation:squareindex 60s linear infinite;animation:squareindex 60s linear infinite;border-radius:10px;background:#000}.layout-bg-triangle{margin-top:-150px;margin-left:1200px;position:absolute;width:0;height:0;-webkit-transform:rotate(26deg);-ms-transform:rotate(26deg);transform:rotate(26deg);-webkit-animation:triangle 100s linear infinite;animation:triangle 100s linear infinite;border-right:320px solid transparent;border-bottom:554px solid blue;border-left:320px solid transparent}
-/* rightbar_css: (http://www.imed-lab.com/qfy-content/themes/qfy-01/css/rightbar.css) */
-/* scroll_top_css: (http://www.imed-lab.com/qfy-content/themes/qfy-01/css/scroll_top.css) */
+
 
 
 

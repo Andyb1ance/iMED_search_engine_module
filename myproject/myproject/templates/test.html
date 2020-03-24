@@ -4,17 +4,16 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <title>检索引擎</title>
     <style id="static-stylesheet" type="text/css"></style>
-    <link href="{{ url_for('static', filename='test.css') }}" media="all" rel="stylesheet"
+    <link href="../static/test.css" media="all" rel="stylesheet"
           type="text/css"> <!-- Cache! -->
 </head>
 
 
-<body class="image-blur content-fullwidth">
+<body class="content-fullwidth">
 
-<div class=" wide " id="page">
-
-    <header class="logo-left-right headerPM menuPosition" id="header" role="banner">
-
+<div id="page">
+    <!-- logo and navigation-->
+    <header id="header" role="banner">
         <div class="wf-wrap">
             <div class="wf-table">
                 <!-- iMed logo -->
@@ -23,7 +22,7 @@
                         <span class="logospan">
                             <img alt="iMED医疗影像/眼科影像团队"
                                  class="preload-me"
-                                 height="156" src="{{ url_for('static', filename='iMed.png') }}"
+                                 height="156" src="../static/iMed.png"
                                  width="512">
                         </span>
                     </a>
@@ -31,10 +30,9 @@
 
                 <!-- !- Navigation -->
                 <nav class="wf-td" id="navigation">
-                    <ul class="mainmenu fancy-rollovers wf-mobile-hidden bit-menu-default underline-hover position-text-right"
-                        id="main-nav">
+                    <ul class="mainmenu" id="main-nav">
                         <!-- list item 1 -->
-                        <li class=" menu-item menu-item-type-post_type menu-item-object-page bit-menu-post-id-9722 menu-item-9723 first level-arrows-on">
+                        <li class="menu-item">
                             <a href="http://www.imed-lab.com/">
                                 <span style="color:deepskyblue;font-family:微软雅黑">
                                     首页<i class="underline"></i>
@@ -42,7 +40,7 @@
                             </a>
                         </li>
                         <!-- list item 2 -->
-                        <li class=" menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15501 current_page_item bit-menu-post-id-15501 menu-item-15504 act level-arrows-on">
+                        <li class="menu-item">
                             <a href="./Search.html">
                                 <span style="color:deepskyblue;font-family:微软雅黑" >
                                     检索引擎<i class="underline"></i>
@@ -59,40 +57,26 @@
 
     <div class="bit_main_content" id="main">
         <div class="wf-wrap">
-            <!-- section1 -->
-            <section
-                    class="qfy-row-1-5e7095926d9d5420220 section     no  section-text-no-shadow section-inner-no-shadow section-normal section-orgi">
-                <!-- 背景图片 -->
+            <!-- title -->
+            <section class="qfy-row-1-5e7095926d9d5420220 section">
+                <!-- background picture -->
                 <div backgroundsize="true" class="background-media   " data-imagebgs=""
                      data-time="3"
                      style="background-image: url(https://cdn.goodq.top/caches/8f9363c9ebbef5d06bb5b9faed32db3f/aHR0cDovL3d3dy5pbWVkLWxhYi5jb20vcWZ5LWNvbnRlbnQvdXBsb2Fkcy8yMDE4LzAyLzdmMjJlMWM2OGNhNGQyYTAzNzZhZWM0ZTM5OGM4M2Y2LmpwZWc_p_p100_p_3D.png); background-repeat:no-repeat; background-size:cover; background-attachment:scroll; background-position:0 0%;">
                     <div class="layout-bg qfy_bg_canvas_3"
                          data-bgcolor="rgba(38,212,239,0.6)" style="pointer-events: none;">
-                        <div class="layout-bg-circle"
-                             style="background:rgba(38,212,239,0.6);animation-duration: 80s; "></div>
                         <div class="layout-bg-square"
                              style="background:rgba(255,255,255,0.6);animation-duration: 80s; "></div>
-                        <div class="layout-bg-triangle"
-                             style="border-bottom-color:rgba(38,212,239,0.6);animation-duration: 80s; "></div>
                     </div>
                 </div>
-                <!-- 蓝色背景 -->
-                <div class="section-background-overlay background-overlay grid-overlay-0 "
+                <!-- mixed background color -->
+                <div class="section-background-overlay background-overlay"
                      style="background-color: rgba(38,212,239,0.7);"></div>
-                <!-- 二级标题 -->
+                <!-- title -->
                 <div class="container">
                     <div class="row qfe_row">
-                        <div class=" qfy-column-1-5e7095926dd01176728 qfy-column-inner  vc_span12  text-Default small-screen-undefined column_middle fullrow">
-                            <div class="qfy-element minheigh1px qfe_text_column qfe_content_element "
-                                 css_animation_delay="0"
-                                 data-ani_iteration_count="1"
-                                 data-anitime="0.7"
-                                 id="vc_header_5e7095926ddf1497"
-                                 m-padding="18px 0 17px 0"
-                                 p-padding="0 0 0 0"
-                                 qfyuuid="qfy_header_nxfs7-c-s2"
-                                 style="position: relative; background-repeat: no-repeat; margin-top: 0px; margin-bottom: 0px; padding: 18px 0px 17px;">
-
+                        <div class="qfy-column-1-5e7095926dd01176728">
+                            <div class="qfy-element" css_animation_delay="0" data-ani_iteration_count="1" data-anitime="0.7" id="vc_header_5e7095926ddf1497" m-padding="18px 0 17px 0" p-padding="0 0 0 0" qfyuuid="qfy_header_nxfs7-c-s2" style="position: relative; background-repeat: no-repeat; margin-top: 0px; margin-bottom: 0px; padding: 18px 0px 17px;">
                                 <div class="qfe_wrapper">
 
                                     <h2 class="qfy_title left mobileleft">
@@ -100,17 +84,15 @@
                                              style="display:inline-block;position:relative;max-width:100%;">
                                             <div class="qfy_title_inner"
                                                  style="display:inline-block;position:relative;max-width:100%;">
-
-                                                        <span class="line-abs top hleft"
-                                                              style="overflow:hidden;border-bottom-style:solid;width:64px;max-width:64px;border-bottom-width:6px;border-bottom-color:#ffffff;margin-left:0px;margin-bottom:20px;"></span>
-
+                                                <!-- -->
+                                                <span class="line-abs top hleft"
+                                                      style="overflow:hidden;
+                                                      border-bottom-style:solid;width:64px;max-width:64px;border-bottom-width:6px;border-bottom-color:#ffffff;margin-left:0px;margin-bottom:20px;"></span>
+                                                <!-- title content -->
                                                 <div class="header_title"
                                                      style="font-family:微软雅黑;font-size:34px;font-weight:bold;font-style:normal;color:#ffffff;display:block;vertical-align:bottom;">
                                                     检索引擎
                                                 </div>
-
-                                                <div class="header_subtitle"
-                                                     style="font-family:微软雅黑;font-size:14px;font-weight:normal;font-style:normal;color:#ffffff;display:block;padding:10px 0 0 0;vertical-align:bottom;"></div>
                                             </div>
                                         </div>
                                     </h2>
@@ -119,15 +101,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- 二级标题结束 -->
-
             </section>
 
-            <!-- section2 -->
-            <section class="qfy-row-2-5e7095926ded5628494 section     smfull  section-text-no-shadow section-inner-no-shadow section-normal section-orgi"
-                    data-fixheight=""
-                    id="bit_n6ilk"
-                    style="margin-bottom:0;border-radius:0px;color:#0c0b0b;">
+            <!-- main content -->
+            <section class="qfy-row-2-5e7095926ded5628494 section"
+                     data-fixheight=""
+                     id="bit_n6ilk"
+                     style="margin-bottom:0;border-radius:0px;color:#0c0b0b;">
                 <div class="section-background-overlay background-overlay grid-overlay-0 "
                      style="background-color: #ffffff;"></div>
 
@@ -292,8 +272,8 @@
 
             </section>
 
-        </div><!-- .wf-wrap -->
-    </div><!-- #main -->
+        </div>
+    </div>
 
 
     <footer class="footer" id="footer">
@@ -351,9 +331,8 @@
                     </div>
                 </section>
             </div>
-        </div><!-- .wf-wrap -->
-
+        </div>
     </footer>
-</div><!-- #page -->
+</div>
 </body>
 </html>
