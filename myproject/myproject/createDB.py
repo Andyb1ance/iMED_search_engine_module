@@ -16,7 +16,7 @@ def createDB(imageFolder,indexFile):
             #transform picture to 256*256
             t = PIL.transform(os.path.join(imageFolder,img))
             #extract feature and store in list 'temp'
-            temp.append(e.extract(t).numpy())
+            temp.append(e.extract(t))
     #construct the index
     
     Faiss.construct(temp,1000,indexFile) 
