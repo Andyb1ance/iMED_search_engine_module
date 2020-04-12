@@ -8,17 +8,17 @@ def search(imagePath,indexFile):
     
     e = Resnet.resnet('cpu')
     t = PIL.transform(imagePath)
-    distance,index = Faiss.search(e.extract(t),indexFile,1)
+    distance,index = Faiss.search(e.extract(t),indexFile,3)
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432") 
     cur = conn.cursor()
+    img_stream = list()
     for each in index[0]:
         sql = 'select img from imgTable limit 1 offset {}'.format(each)
         cur.execute(sql)
-    rows = cur.fetchall()
-    img_stream = list()
-    for row in rows:
+        rows = cur.fetchall()
         temp = list()
-        temp.append(str(base64.b64encode(row[0]), encoding='utf-8'))
+        for row in rows:
+            temp.append(str(base64.b64encode(row[0]), encoding='utf-8'))
         img_stream.append(temp)
     conn.commit()
     return img_stream

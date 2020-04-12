@@ -1,4 +1,4 @@
-#import faiss
+import faiss
 import numpy as np
 
 '''
@@ -12,15 +12,14 @@ class Encoder:
 
     def __init__(self,device):
         self.device = device
-    def construct(self,vectors,Dimension,indexFile):
+    def construct(self,vectors,indexFile):
         # if self.device == 'gpu':
         #     res = faiss.StandardGpuResources()
         #     index = faiss.index_cpu_to_gpu(res, 0, index)
         # assert type(vectors)==list
         vectors = transform(vectors)
-        vectors = np.squeeze(vectors)
-        print(vectors.shape)    
-        index=faiss.IndexFlatL2(Dimension)
+        vectors = np.squeeze(vectors)    
+        index=faiss.IndexFlatL2(vectors.shape[1])
         index.add(vectors)
         with open(indexFile,'w') as file:
     	    file.write('')
