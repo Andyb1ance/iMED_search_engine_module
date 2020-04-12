@@ -5,18 +5,13 @@ class Framework:
         self.extractor = CBIRtool.extractor.select[extractor](device)
         self.encoder = CBIRtool.encoder.select[encoder](device)
         self.indexFile = indexFile
-    def construct(self,imageFolder):
-        images = os.walk(imageFolder)
-        temp = list()
-        fileList = list()
-        for path,dir_list,file_list in images:
-            fileList = file_list
-            for img in file_list:
-                #extract feature and store in list 'temp'
-                temp.append(self.extractor.extract(os.path.join(imageFolder,img)))
+    def construct(self,file_list):
+        for img in file_list:
+            #extract feature and store in list 'temp'
+            temp.append(self.extractor.extract(img))
         #construct the index
         self.encoder.construct(temp,self.indexFile)
-        return fileList
+        return 
     def search(self,imagePath,k):
         distance,index = self.encoder.search(self.extractor.extract(imagePath),self.indexFile,k)
         return index[0]
