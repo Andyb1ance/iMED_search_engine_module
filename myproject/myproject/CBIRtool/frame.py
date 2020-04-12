@@ -6,6 +6,7 @@ class Framework:
         self.encoder = CBIRtool.encoder.select[encoder](device)
         self.indexFile = indexFile
     def construct(self,file_list):
+        temp = list()
         for img in file_list:
             #extract feature and store in list 'temp'
             temp.append(self.extractor.extract(img))
