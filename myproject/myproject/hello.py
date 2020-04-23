@@ -9,7 +9,8 @@ import os
 import random
 import datetime
 import base64
-import search
+import CBIRtool
+import psycopg2
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'upload'
@@ -27,10 +28,25 @@ def api_upload():
     # file_dir = os.path.join(basedir, app.config['UPLOAD_FOLDER'])
     # if not os.path.exists(file_dir):
     #     os.makedirs(file_dir)
+    print("start")
     f = request.files['photo']
     print(type(f))
-    images = search.search(f,'./encoder/index/sample.index')
-    return render_template('Search.html', u=images)
+    a = CBIRtool.frame.Framework("Resnet34","Faiss",'./CBIRtool/encoder/index/sample.index')
+    images = a.search(f,3)
+    conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
+    cur = conn.cursor()
+    img_stream = list()
+    for each in images:
+        sql = 'select img from imgTable limit 1 offset {}'.format(each)
+        cur.execute(sql)
+        rows = cur.fetchall()
+        temp = list()
+        for row in rows:
+            temp.append(str(base64.b64encode(row[0]), encoding='utf-8'))
+    img_stream.append(temp)
+    conn.commit()
+
+    return render_template('Search.html')
     # if f and allowed_file(f.filename):
     #     fname = secure_filename(f.filename)
     #     ext = fname.rsplit('.', 1)[1]
@@ -71,4 +87,4 @@ def hello():
     return render_template('Search.html')
 
 if __name__ == '__main__':
-    app.run(debug=False,host='0.0.0.0', port=5000)
+    app.run(threaded = True,debug=False,host='0.0.0.0', port=5000)
