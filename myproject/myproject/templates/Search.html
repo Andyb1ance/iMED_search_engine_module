@@ -6,8 +6,14 @@
     <style id="static-stylesheet" type="text/css"></style>
     <link href="{{ url_for('static', filename='test.css') }}" media="all" rel="stylesheet"
           type="text/css"> <!-- Cache! -->
+    <script>
+        function bigger(){
+            var image=document.getElementsByClassName("pic")[0];
+            image.style.height=image.height*1.1+'px';
+            image.style.width=image.width*1.1+'px';
+        }
+    </script><!-- JS for enlarge the photo. The basic version. Further: make it show in a new html !-->
 </head>
-
 
 <body class="image-blur content-fullwidth">
 
@@ -244,11 +250,11 @@
                                                                         {% for i in u %}
                                                                         <tr>
                                                                             <td>
-                                                                                <img style="width:360px" src="data:;base64,{{ i[0] }}">
+                                                                                <img style="width:360px" src="data:;base64,{{ i[0] }}" class="pic" onclick="bigger()">
                                                                             </td>
                                                                             {% for j in i[1:] %}
                                                                             <td>
-                                                                                <img style="width:360px" src="data:;base64,{{ j }}">
+                                                                                <img style="width:360px" src="data:;base64,{{ j }}" class="pic" onclick="bigger()">
                                                                             </td>
                                                                             {% endfor %}
                                                                         </tr>
