@@ -43,10 +43,10 @@ def api_upload():
         temp = list()
         for row in rows:
             temp.append(str(base64.b64encode(row[0]), encoding='utf-8'))
-    img_stream.append(temp)
+        img_stream.append(temp)
     conn.commit()
 
-    return render_template('Search.html')
+    return render_template('Search.html',u=img_stream)
     # if f and allowed_file(f.filename):
     #     fname = secure_filename(f.filename)
     #     ext = fname.rsplit('.', 1)[1]
