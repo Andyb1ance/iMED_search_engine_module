@@ -57,6 +57,9 @@ downNote receives dataset name , image id and note id
 Select the path of notes according to dataset name , image id and note id
 Then return the note.
 '''
+    dataset = request.args.get('dataset')
+    image_id = request.args.get('id')
+    note_id = request.args.get('noteId')
     with open('data.json','r') as f:
         notes = f.read()
     return notes
@@ -80,6 +83,8 @@ Then search for similar image in the dataset
 and return the id of the similar images
 in form str : 'id1,id2,id3,...,idn'
 '''
+    dataset = request.args.get('dataset')
+    request.files['file'] = image 
     temp = '1,2,3'
     return temp
 # # 上传文件
