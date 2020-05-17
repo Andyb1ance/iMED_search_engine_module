@@ -19,7 +19,7 @@ import uuid
 import json
 
 imagepath = '/home/andyb1ance/iMED_search_engine_module/myproject/myproject/static/'
-nodepath = '/home/andyb1ance/iMED_search_engine_module/'
+notepath = '/home/andyb1ance/iMED_search_engine_module/'
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'upload'
@@ -67,10 +67,10 @@ def upNote():
 # dataset name , image id.
     notes = request.get_json().get('notes')
     uuid_str = uuid.uuid4().hex
-    nodefile = nodepath + uuid_str
-    with open(nodefile,'w') as f:
+    notefile = notepath + uuid_str
+    with open(notefile,'w') as f:
         f.write(notes)
-    with open(nodefile,'r') as f:
+    with open(notefile,'r') as f:
         data = json.load(f)
     imgname = list(data.keys())[0]
     imgpath = imagepath + imgname
@@ -80,7 +80,7 @@ def upNote():
     cur.execute(sql)
     rows = cur.fetchall()
     image_id = rows[0]
-    sql = "INSERT INTO notes (image_id, path) VALUES ({0}, {1});".format(image_id, nodefile)
+    sql = "INSERT INTO notes (image_id, path) VALUES ({0}, {1});".format(image_id, notefile)
     cur.execute(sql)
     conn.commit()
     print(notes)
@@ -91,7 +91,17 @@ def downNote():
 # downNote receives dataset name , image id and note id
 # Select the path of notes according to dataset name , image id and note id
 # Then return the note.
-    with open('data.json','r') as f:
+    dataset = request.args.get('dataset')
+    image_id = request.args.get('id')
+    note_id = request.args.get('noteId')
+    conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
+    cur = conn.cursor()
+    sql = "select path from notes where id = {0})".format(note_id)
+    cur.execute(sql)
+    rows = cur.fetchall()
+    conn.commit()
+    path = rows[0]
+    with open(path,'r') as f:
         notes = f.read()
     return notes
 
@@ -119,6 +129,8 @@ def search():
 # Then search for similar image in the dataset
 # and return the id of the similar images
 # in form str : 'id1,id2,id3,...,idn'
+    dataset = request.args.get('dataset')
+    request.files['file'] = image
     temp = '1,2,3'
     return temp
 
