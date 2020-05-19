@@ -18,8 +18,8 @@ import psycopg2
 import uuid
 import json
 
-imagepath = '/home/andyb1ance/iMED_search_engine_module/myproject/myproject/static/'
-notepath = '/home/andyb1ance/iMED_search_engine_module/'
+imagepath = '/home/andyb1ance/dataset'
+notepath = '/home/andyb1ance/notes'
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'upload'
@@ -41,15 +41,13 @@ def getImage():
 
     dataset = request.args.get('dataset')
     image_id = request.args.get('id')
-    path = ''
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
     cur = conn.cursor()
-    sql = "select path from images where id = {0})".format(image_id)
+    sql = 'select path from {0} where id = {1};'.format(dataset, image_id)
     print(sql)
     cur.execute(sql)
     rows = cur.fetchall()
-    path = rows[0]
-    conn.commit()
+    path = rows[0][0]
     print(path)
     im = Image.open(path)
     im.resize((256, 256), Image.ANTIALIAS)
@@ -58,6 +56,7 @@ def getImage():
     byte_data = img_buffer.getvalue()
     base64_data = base64.b64encode(byte_data)
     s = base64_data.decode()
+    conn.close()
     return str(s)
 
 @app.route('/up_notes', methods=['POST'], strict_slashes=False)
@@ -65,25 +64,21 @@ def upNote():
 # upNote receives dataset name , image id and notes
 # Store the notes in proper place and store the path in database according to
 # dataset name , image id.
+    dataset = request.args.get('dataset')
+    image_id = request.args.get('id')
     notes = request.get_json().get('notes')
     uuid_str = uuid.uuid4().hex
-    notefile = notepath + uuid_str
-    with open(notefile,'w') as f:
+    note_file = os.path.join(notepath, uuid_str)
+    with open(note_file,'w') as f:
         f.write(notes)
-    with open(notefile,'r') as f:
-        data = json.load(f)
-    imgname = list(data.keys())[0]
-    imgpath = imagepath + imgname
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
     cur = conn.cursor()
-    sql = "select id from images where path = {0})".format(imgpath)
-    cur.execute(sql)
-    rows = cur.fetchall()
-    image_id = rows[0]
-    sql = "INSERT INTO notes (image_id, path) VALUES ({0}, {1});".format(image_id, notefile)
+    table_name = dataset + '_notes'
+    note_file = "'" + note_file + "'"
+    sql = 'INSERT INTO {0} (image_id, path) VALUES ({1}, {2});'.format(table_name, image_id, note_file)
     cur.execute(sql)
     conn.commit()
-    print(notes)
+    conn.close()
     return notes
 
 @app.route('/down_note', methods = ['GET'],strict_slashes=False)
@@ -96,11 +91,11 @@ def downNote():
     note_id = request.args.get('noteId')
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
     cur = conn.cursor()
-    sql = "select path from notes where id = {0})".format(note_id)
+    table_name = dataset + '_notes'
+    sql = "select path from {0} where id = {1}".format(table_name, note_id)
     cur.execute(sql)
     rows = cur.fetchall()
-    conn.commit()
-    path = rows[0]
+    path = rows[0][0]
     with open(path,'r') as f:
         notes = f.read()
     return notes
@@ -114,14 +109,15 @@ def getNote():
     dataset = request.args.get('dataset')
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
     cur = conn.cursor()
-    sql = "select id from notes where image_id = {0})".format(image_id)
+    table_name = dataset + '_notes'
+    sql = 'select id from {0} where image_id = {1}'.format(table_name, image_id)
     cur.execute(sql)
     rows = cur.fetchall()
-    string = ''
-    for i in rows:
-        string += rows[i] + ','
-    string = string[:-1]
-    return string
+    id_list = ''
+    for row in rows:
+        id_list += row[0] + ','
+    id_list = id_list[:-1]
+    return id_list
 
 @app.route('/search', methods=['POST'], strict_slashes=False)
 def search():
