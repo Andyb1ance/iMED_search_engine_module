@@ -2,7 +2,7 @@
 # !/usr/bin/env python
 import string
 
-from werkzeug.utils import secure_filename
+
 from flask import Flask, Response,render_template, jsonify, request, make_response, send_from_directory, abort, redirect, url_for
 import time
 import os
@@ -59,13 +59,39 @@ def getImage():
     conn.close()
     return str(s)
 
+@app.route('/image',methods=['GET'])
+def getOneImage():
+
+# getImage will receive dataset and id of image.
+# Using the id to query database ,and get the path of image.
+# Resize the image and return it in base64 form.
+
+    dataset = request.args.get('dataset')
+    image_id = request.args.get('id')
+    conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
+    cur = conn.cursor()
+    sql = 'select path from {0} where id = {1};'.format(dataset, image_id)
+    print(sql)
+    cur.execute(sql)
+    rows = cur.fetchall()
+    path = rows[0][0]
+    print(path)
+    im = Image.open(path)
+    img_buffer = io.BytesIO()
+    im.save(img_buffer, format='JPEG')
+    byte_data = img_buffer.getvalue()
+    base64_data = base64.b64encode(byte_data)
+    s = base64_data.decode()
+    conn.close()
+    return str(s)
+
 @app.route('/up_notes', methods=['POST'], strict_slashes=False)
 def upNote():
 # upNote receives dataset name , image id and notes
 # Store the notes in proper place and store the path in database according to
 # dataset name , image id.
-    dataset = request.args.get('dataset')
-    image_id = request.args.get('id')
+    dataset = request.get_json().get('dataset')
+    image_id = request.get_json().get('id')
     notes = request.get_json().get('notes')
     uuid_str = uuid.uuid4().hex
     note_file = os.path.join(notepath, uuid_str)
@@ -83,11 +109,10 @@ def upNote():
 
 @app.route('/down_note', methods = ['GET'],strict_slashes=False)
 def downNote():
-# downNote receives dataset name , image id and note id
-# Select the path of notes according to dataset name , image id and note id
+# downNote receives dataset name and note id
+# Select the path of notes according to dataset name  and note id
 # Then return the note.
     dataset = request.args.get('dataset')
-    image_id = request.args.get('id')
     note_id = request.args.get('noteId')
     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
     cur = conn.cursor()
@@ -125,8 +150,10 @@ def search():
 # Then search for similar image in the dataset
 # and return the id of the similar images
 # in form str : 'id1,id2,id3,...,idn'
-    dataset = request.args.get('dataset')
-    request.files['file'] = image
+    dataset = request.files['dataset'] 
+    image = request.files['image'] 
+    print(dataset)
+    print(type(f))
     temp = '1,2,3'
     return temp
 
