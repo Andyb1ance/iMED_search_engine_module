@@ -140,7 +140,7 @@ def getNote():
     rows = cur.fetchall()
     id_list = ''
     for row in rows:
-        id_list += row[0] + ','
+        id_list += str(row[0]) + ','
     id_list = id_list[:-1]
     return id_list
 
@@ -150,10 +150,10 @@ def search():
 # Then search for similar image in the dataset
 # and return the id of the similar images
 # in form str : 'id1,id2,id3,...,idn'
-    dataset = request.files['dataset'] 
-    image = request.files['image'] 
-    print(dataset)
-    print(type(f))
+    image = request.files['image']
+    dataset = request.files['dataset']
+    print(dataset.read())
+    print(type(image))
     temp = '1,2,3'
     return temp
 
@@ -222,4 +222,4 @@ def search():
 #     return render_template('Search.html')
 
 if __name__ == '__main__':
-    app.run(threaded = True,debug=False,host='127.0.0.1', port=5000)
+    app.run(threaded = True,debug=False,host='0.0.0.0', port=5000)
