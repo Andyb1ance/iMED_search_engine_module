@@ -163,7 +163,7 @@ def search():
     print(images)
     id_list = ''
     for i in images:
-        id_list += str(i) + ','
+        id_list += str(i+1) + ','
     id_list = id_list[:-1]
     
     return id_list
