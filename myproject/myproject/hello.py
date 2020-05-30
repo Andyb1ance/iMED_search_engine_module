@@ -32,7 +32,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
-@app.route('/images',methods=['GET'])
+@app.route('/api/images',methods=['GET'])
 def getImage():
 
 # getImage will receive dataset and id of image.
@@ -59,7 +59,7 @@ def getImage():
     conn.close()
     return str(s)
 
-@app.route('/image',methods=['GET'])
+@app.route('/api/image',methods=['GET'])
 def getOneImage():
 
 # getImage will receive dataset and id of image.
@@ -85,7 +85,7 @@ def getOneImage():
     conn.close()
     return str(s)
 
-@app.route('/up_notes', methods=['POST'], strict_slashes=False)
+@app.route('/api/up_notes', methods=['POST'], strict_slashes=False)
 def upNote():
 # upNote receives dataset name , image id and notes
 # Store the notes in proper place and store the path in database according to
@@ -107,7 +107,7 @@ def upNote():
     conn.close()
     return notes
 
-@app.route('/down_note', methods = ['GET'],strict_slashes=False)
+@app.route('/api/down_note', methods = ['GET'],strict_slashes=False)
 def downNote():
 # downNote receives dataset name and note id
 # Select the path of notes according to dataset name  and note id
@@ -125,7 +125,7 @@ def downNote():
         notes = f.read()
     return notes
 
-@app.route('/get_notes', methods = ['GET'],strict_slashes=False)
+@app.route('/api/get_notes', methods = ['GET'],strict_slashes=False)
 def getNote():
 # getNote receives  dataset name , image id
 # return the notes'id belong to the image and dataset
@@ -144,82 +144,24 @@ def getNote():
     id_list = id_list[:-1]
     return id_list
 
-@app.route('/search', methods=['POST'], strict_slashes=False)
+@app.route('/api/search', methods=['POST'], strict_slashes=False)
 def search():
 # search receives image and dataset name
 # Then search for similar image in the dataset
 # and return the id of the similar images
 # in form str : 'id1,id2,id3,...,idn'
     image = request.files['image']
-    dataset = request.files['dataset']
-    print(dataset.read())
-    print(type(image))
-    temp = '1,2,3'
-    return temp
+    dataset = request.files['dataset'].read().decode()
+    a = CBIRtool.frame.Framework("Resnet34","Faiss",'./CBIRtool/encoder/index/sample.index')
+    images = a.search(image,8)
+    print(images)
+    id_list = ''
+    for i in images:
+        id_list += str(i) + ','
+    id_list = id_list[:-1]
+    
+    return id_list
 
-# # 上传文件
-# @app.route('/up_photo', methods=['POST'], strict_slashes=False)
-# def api_upload():
-#     # file_dir = os.path.join(basedir, app.config['UPLOAD_FOLDER'])
-#     # if not os.path.exists(file_dir):
-#     #     os.makedirs(file_dir)
-#     print("start")
-#     f = request.files['photo']
-#     print(type(f))
-#     a = CBIRtool.frame.Framework("Resnet34","Faiss",'./CBIRtool/encoder/index/sample.index')
-#     images = a.search(f,3)
-#     conn = psycopg2.connect(database="test", user="lee", password="666666", host="127.0.0.1", port="5432")
-#     cur = conn.cursor()
-#     img_stream = list()
-#     for each in images:
-#         sql = 'select img from imgTable limit 1 offset {}'.format(each)
-#         cur.execute(sql)
-#         rows = cur.fetchall()
-#         temp = list()
-#         for row in rows:
-#             temp.append(str(base64.b64encode(row[0]), encoding='utf-8'))
-#         img_stream.append(temp)
-#     conn.commit()
-
-#     return render_template('Search.html',u=img_stream)
-#     # if f and allowed_file(f.filename):
-#     #     fname = secure_filename(f.filename)
-#     #     ext = fname.rsplit('.', 1)[1]
-#     #     ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 8))
-#     #     new_filename = ran_str + '.' + ext
-#     #     fullPath=os.path.join(file_dir, new_filename)
-#     #     f.save(fullPath)
-
-#         # return redirect(url_for('test'))
-#     # else:
-#     #     return jsonify({"error": 1001, "msg": "上传失败"})
-
-# # @app.route('/test', strict_slashes=False)
-# # def test():
-# #     #这里应该要把图片做一个处理 变成特征向量
-# #     #使用特征向量去数据库索引 标签+图片
-# #     #把标签和图片变成数组传过去
-# #     images = []
-# #     #如果是从url得到图片 则转换成base64
-# #     #for i in filename:
-# #     #    images.append(return_img_stream(i))
-# #     images.append([])
-# #     images[0].append(return_img_stream("./upload/12LDT7yX.png"))
-# #     images[0].append(return_img_stream("./upload/12LDT7yX.png"))
-# #     #images.append("D:\code\iMED_web_front_end\myproject\myproject\upload\AMVJ5Fno.png")
-# #     #如果直接是base64图片，则全加到images里发过去
-# #     return render_template('Search.html', u=images)
-
-
-# # def return_img_stream(img_local_path):
-# #     with open(img_local_path, 'rb') as f:
-# #         image = f.read()
-# #     img_stream = str(base64.b64encode(image), encoding='utf-8')
-# #     return img_stream
-
-# @app.route('/hello')
-# def hello():
-#     return render_template('Search.html')
 
 if __name__ == '__main__':
     app.run(threaded = True,debug=False,host='0.0.0.0', port=5000)
