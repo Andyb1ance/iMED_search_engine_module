@@ -53,7 +53,7 @@ def getImage():
     imgname = path.split('/')[-1]
     imgname = 'com' + imgname
     dirname = 'com' + dataset
-    dirpath = os.path.join(compressedpath, dirname)
+    dirpath = os.path.join(imagepath, dirname)
     imgpath = os.path.join(dirpath, imgname)
     if not os.path.exists(imgpath):
         im = Image.open(path)
