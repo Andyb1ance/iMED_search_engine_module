@@ -49,15 +49,21 @@ def getImage():
     rows = cur.fetchall()
     path = rows[0][0]
     print(path)
-    im = Image.open(path)
-    im.resize((256, 256), Image.ANTIALIAS)
-    img_buffer = io.BytesIO()
-    im.save(img_buffer, format='JPEG')
-    byte_data = img_buffer.getvalue()
-    base64_data = base64.b64encode(byte_data)
-    s = base64_data.decode()
     conn.close()
+    imgname = path.split('/')[-1]
+    imgname = 'com' + imgname
+    dirname = 'com' + dataset
+    dirpath = os.path.join(compressedpath, dirname)
+    imgpath = os.path.join(dirpath, imgname)
+    if not os.path.exists(imgpath):
+        im = Image.open(path)
+        im.resize((256, 256), Image.ANTIALIAS)
+        im.save(imgpath, format='JPEG')
+    with open(imgpath,'rb') as f:
+        base64_data = base64.b64encode(f.read())
+    s = base64_data.decode()
     return str(s)
+
 
 @app.route('/api/image',methods=['GET'])
 def getOneImage():
